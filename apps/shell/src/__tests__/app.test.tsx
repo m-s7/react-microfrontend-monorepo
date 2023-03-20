@@ -1,30 +1,40 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
 import { App } from '@/app';
+import { act, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 describe('app', () => {
-  it('placeholder', () => {
-    expect(true).toBeTruthy();
+  let button: HTMLElement;
+  let paragraph: HTMLElement;
+  beforeEach(() => {
+    const { getByTestId } = render(<App />);
+    button = getByTestId('button-test');
+    paragraph = getByTestId('hello-text-test');
   });
-  // it('displays text after clicking on a button and hides it after 950ms', () => {
-  //   jest.useFakeTimers();
-  //
-  //   const { getByRole, container } = render(<App />);
-  //   const button = getByRole('button');
-  //
-  //   act(() => {
-  //     button?.click();
-  //   });
-  //
-  //   const paragraph = container?.querySelector('.hello');
-  //
-  //   expect(paragraph?.className).toContain('fade-out');
-  //
-  //   act(() => {
-  //     jest.advanceTimersByTime(950);
-  //   });
-  //   expect(paragraph?.className).toContain('hidden');
-  //
-  //   jest.useRealTimers();
-  // });
+
+  it('displays hello text after clicking on a button', () => {
+    jest.useFakeTimers();
+
+    act(() => {
+      button.click();
+    });
+
+    expect(paragraph.textContent).toContain('Hello');
+    expect(paragraph).toBeVisible();
+
+    jest.useRealTimers();
+  });
+
+  it('hides hello text after 950ms', () => {
+    jest.useFakeTimers();
+
+    act(() => {
+      button.click();
+      jest.advanceTimersByTime(950);
+    });
+
+    expect(paragraph).not.toBeVisible();
+
+    jest.useRealTimers();
+  });
 });

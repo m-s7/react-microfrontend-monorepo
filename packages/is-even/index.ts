@@ -1,1 +1,3 @@
-export const isEven = (x: number) => x % 2 === 0;
+import { isEven } from './lib';
+
+export { isEven };
