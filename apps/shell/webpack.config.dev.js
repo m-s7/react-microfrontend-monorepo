@@ -2,6 +2,8 @@
 const path = require('path');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
   mode: 'development',
@@ -10,11 +12,22 @@ module.exports = {
     rules: require('../../packages/webpack/app/webpack.rules'),
   },
   output: {
-    publicPath: '/', //Important: HMR will break on deep route navigation without publicPath
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
+    publicPath: 'auto', //Important: HMR will break on deep route navigation without publicPath
   },
-  plugins: [...require('../../packages/webpack/app/webpack.plugins'), new ReactRefreshPlugin()],
+  plugins: [
+    ...require('../../packages/webpack/app/webpack.plugins'),
+    new ReactRefreshPlugin(),
+    new ModuleFederationPlugin({
+      name: 'shell',
+      remotes: {
+        admin: 'admin@http://localhost:4301/remoteEntry.js',
+      },
+      shared: {
+        react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
+        'react-dom': { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
+      },
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
     alias: {
@@ -29,10 +42,8 @@ module.exports = {
     historyApiFallback: true,
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-    runtimeChunk: true,
+    splitChunks: false,
+    runtimeChunk: 'single',
   },
   performance: {
     hints: false,

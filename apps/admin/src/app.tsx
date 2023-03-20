@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEven } from 'is-even';
-import { Container } from '@/app.styled';
+import { Container } from './app.styled';
 
 const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
 
@@ -13,3 +13,5 @@ export const App = () => {
     </Container>
   );
 };
+
+export default App;
