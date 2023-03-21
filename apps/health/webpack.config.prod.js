@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
 
 module.exports = {
   mode: 'production',
@@ -21,11 +23,15 @@ module.exports = {
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
         'react-dom': { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
+        'styled-components': { singleton: true, strictVersion: true, requiredVersion: '5.3.9' },
       },
     }),
   ],
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   // optimization: {
   //   minimize: true,

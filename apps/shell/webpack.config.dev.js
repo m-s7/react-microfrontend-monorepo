@@ -26,6 +26,7 @@ module.exports = {
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
         'react-dom': { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
+        'styled-components': { singleton: true, strictVersion: true, requiredVersion: '5.3.9' },
       },
     }),
   ],
