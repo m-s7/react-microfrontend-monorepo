@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Button } from '../../index';
+import { Button } from '../button';
 
 describe('debounce', () => {
   it('renders with correct text', () => {
@@ -11,9 +11,7 @@ describe('debounce', () => {
 
   it('calls function passed by onClick prop', () => {
     const onClickMock = jest.fn();
-    const { getByRole } = render(
-      <Button onClick={onClickMock}>Increment</Button>
-    );
+    const { getByRole } = render(<Button onClick={onClickMock}>Increment</Button>);
     getByRole('button').click();
 
     expect(onClickMock).toHaveBeenCalledTimes(1);

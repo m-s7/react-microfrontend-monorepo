@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledButton } from '@/components/button/button.styled';
+import { StyledButton } from './button.styled';
 
 interface ButtonProps {
   onClick?: () => void;

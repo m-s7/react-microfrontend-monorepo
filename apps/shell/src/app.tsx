@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Home } from '@/pages';
 import { Layout } from '@/layouts';
 import { LdsLoader } from '@/components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { SuspenseContainer } from '@/app.styled';
-const Admin = React.lazy(async () => {
+import { SuspenseContainer } from './app.styled';
+const Admin = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 750));
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return import('admin/Admin');
 });
-const Health = React.lazy(async () => {
+const Health = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -21,7 +21,7 @@ const Health = React.lazy(async () => {
 
 export const App = () => {
   return (
-    <React.Suspense
+    <Suspense
       fallback={
         <SuspenseContainer>
           <LdsLoader />
@@ -37,6 +37,6 @@ export const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </React.Suspense>
+    </Suspense>
   );
 };

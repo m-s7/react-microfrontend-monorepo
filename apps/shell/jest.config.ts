@@ -16,9 +16,7 @@ const config: Config = {
     '^.+\\.[jt]sx?$': 'ts-jest',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-  // setupFilesAfterEnv: [
-  // 	'<rootDir>/src/setupTests.ts',
-  // ],
+  // setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };
 
 export default config;
