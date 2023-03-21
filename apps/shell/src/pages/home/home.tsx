@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import icon from '@/assets/icon.png';
 import { Button } from '@/components';
 import { debounce } from '@/utils';
-import { Heading, HelloText, Icon, Text } from './home.styled';
+import { Container, Heading, HelloText, Icon, Text } from './home.styled';
 
 export const Home = () => {
   const [isHello, setIsHello] = useState(false);
@@ -12,10 +12,10 @@ export const Home = () => {
   }, 950);
 
   return (
-    <>
+    <Container>
       <Icon src={icon} alt="React Icon" />
-      <Heading>React Minimal Boilerplate</Heading>
-      <Text>(React18 + TypeScript + Webpack5 + SCSS + Jest + ESLint)</Text>
+      <Heading>Shell</Heading>
+      <Text>(Microfrontend Container App)</Text>
       <Button
         onClick={() => {
           setIsHello(true);
@@ -27,6 +27,6 @@ export const Home = () => {
       <HelloText data-testid="hello-text-test" isVisible={isHello}>
         Hello
       </HelloText>
-    </>
+    </Container>
   );
 };
