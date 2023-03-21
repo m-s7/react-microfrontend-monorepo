@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Button } from '../index';
+import { Button } from '../../index';
 
 describe('debounce', () => {
   it('renders with correct text', () => {

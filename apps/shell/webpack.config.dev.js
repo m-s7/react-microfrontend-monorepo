@@ -21,6 +21,7 @@ module.exports = {
       name: 'shell',
       remotes: {
         admin: 'admin@http://localhost:4301/remoteEntry.js',
+        health: 'health@http://localhost:4302/remoteEntry.js',
       },
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },

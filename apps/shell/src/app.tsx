@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
-import icon from '@/assets/icon.png';
-import { Button } from '@/components';
-import { debounce } from '@/utils';
-import { Container, Heading, HelloText, Icon, Text } from '@/app.styled';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const Admin = React.lazy(() => import('admin/Admin'));
+import React from 'react';
+import { Home } from '@/pages';
+import { Layout } from '@/layouts';
+import { LdsLoader } from '@/components';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { SuspenseContainer } from '@/app.styled';
+const Admin = React.lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 750));
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return import('admin/Admin');
+});
+const Health = React.lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return import('health/Health');
+});
 
 export const App = () => {
-  const [isHello, setIsHello] = useState(false);
-
-  const clickHandler = debounce(() => {
-    setIsHello(false);
-  }, 950);
-
   return (
-    <Container>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <Admin />
-      </React.Suspense>
-      <Icon src={icon} alt="React Icon" />
-      <Heading>React Minimal Boilerplate</Heading>
-      <Text>(React18 + TypeScript + Webpack5 + SCSS + Jest + ESLint)</Text>
-      <Button
-        onClick={() => {
-          setIsHello(true);
-          clickHandler();
-        }}
-      >
-        Say Hello!
-      </Button>
-      <HelloText data-testid="hello-text-test" isVisible={isHello}>
-        Hello
-      </HelloText>
-    </Container>
+    <React.Suspense
+      fallback={
+        <SuspenseContainer>
+          <LdsLoader />
+        </SuspenseContainer>
+      }
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/health" element={<Health />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.Suspense>
   );
 };

@@ -1,6 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
@@ -15,10 +13,10 @@ module.exports = {
   plugins: [
     ...require('../../packages/webpack/app/webpack.plugins'),
     new ModuleFederationPlugin({
-      name: 'shell',
-      remotes: {
-        admin: 'admin@http://localhost:4301/remoteEntry.js',
-        health: 'admin@http://localhost:4302/remoteEntry.js',
+      name: 'health',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Health': './src/app',
       },
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },
@@ -28,9 +26,6 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
   },
   // optimization: {
   //   minimize: true,

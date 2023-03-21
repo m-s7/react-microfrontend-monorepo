@@ -7,7 +7,7 @@ const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
 export const App = () => {
   return (
     <Container>
-      <h1>Admin</h1>
+      <h1>Health</h1>
       <div>Is 1 even: {getIsEventText(7)}</div>
       <div>Is 2 even: {getIsEventText(2)}</div>
     </Container>
