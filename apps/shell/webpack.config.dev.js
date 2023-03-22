@@ -32,9 +32,6 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
   },
   devtool: 'eval',
   devServer: {

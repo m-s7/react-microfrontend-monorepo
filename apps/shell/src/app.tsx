@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
-import { Home } from '@/pages';
-import { Layout } from '@/layouts';
-import { LdsLoader } from '@/components';
+import { Home } from './pages';
+import { Layout } from './layouts';
+import { LdsLoader } from './components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SuspenseContainer } from './app.styled';
 const Admin = lazy(async () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import icon from '@/assets/icon.png';
-import { Button } from '@/components';
-import { debounce } from '@/utils';
+import icon from '../../assets/icon.png';
+import { Button } from '../../components';
+import { debounce } from '../../utils';
 import { Container, Heading, HelloText, Icon, Text } from './home.styled';
 
 export const Home = () => {
