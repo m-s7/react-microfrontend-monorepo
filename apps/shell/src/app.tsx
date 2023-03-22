@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { Home } from './pages';
 import { Layout } from './layouts';
 import { LdsLoader } from './components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SuspenseContainer } from './app.styled';
+import SharedContext from 'shared-context';
 const Admin = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 750));
 
@@ -20,23 +21,37 @@ const Health = lazy(async () => {
 });
 
 export const App = () => {
+  const [name, setName] = useState('initial');
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setName(`new-name-${Math.random()}`);
+    }, 2500);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
   return (
-    <Suspense
-      fallback={
-        <SuspenseContainer>
-          <LdsLoader />
-        </SuspenseContainer>
-      }
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/health" element={<Health />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Suspense>
+    <SharedContext.Provider value={{ name }}>
+      <Suspense
+        fallback={
+          <SuspenseContainer>
+            <LdsLoader />
+          </SuspenseContainer>
+        }
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/admin" element={<Admin test="www" />} />
+              <Route path="/health" element={<Health />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
+    </SharedContext.Provider>
   );
 };
