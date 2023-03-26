@@ -22,6 +22,7 @@ module.exports = {
       remotes: {
         admin: 'admin@http://localhost:4301/remoteEntry.js',
         health: 'health@http://localhost:4302/remoteEntry.js',
+        settings: 'settings@http://localhost:3000/_next/static/chunks/remoteEntry.js',
       },
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },

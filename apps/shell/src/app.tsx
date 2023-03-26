@@ -20,6 +20,14 @@ const Health = lazy(async () => {
   return import('health/Health');
 });
 
+const Settings = lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 100));
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return import('settings/Settings');
+});
+
 export const App = () => {
   const [name, setName] = useState('initial');
 
@@ -42,6 +50,7 @@ export const App = () => {
           </SuspenseContainer>
         }
       >
+        <Settings />
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
