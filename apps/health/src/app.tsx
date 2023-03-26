@@ -5,8 +5,6 @@ import { Container } from '@/app.styled';
 const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
 
 export const App = (props: any) => {
-  console.log(props);
-
   return (
     <Container>
       <h1>Health</h1>
