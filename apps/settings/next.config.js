@@ -17,12 +17,12 @@ module.exports = {
             react: { singleton: true, requiredVersion: false },
             'react/': { singleton: true, requiredVersion: false },
             'react-dom': { singleton: true, requiredVersion: false },
-            'next/dynamic': { requiredVersion: false, singleton: true },
             'styled-jsx': { requiredVersion: false, singleton: true },
             'styled-jsx/style': { requiredVersion: false, singleton: true },
             'next/link': { requiredVersion: false, singleton: true },
             'next/router': { requiredVersion: false, singleton: true },
             'next/script': { requiredVersion: false, singleton: true },
+            'next/dynamic': { requiredVersion: false, singleton: true },
             'next/head': { requiredVersion: false, singleton: true },
             'shared-context': {
               import: 'shared-context',
