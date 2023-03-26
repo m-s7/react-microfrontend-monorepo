@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-const page = import('../real/index');
+const page = import('../real/some');
 
-const Page = dynamic(() => import('../real/index'), { suspense: true });
+const Page = dynamic(() => import('../real/some'), { suspense: true });
 // @ts-ignore
 Page.getInitialProps = async ctx => {
   // @ts-ignore

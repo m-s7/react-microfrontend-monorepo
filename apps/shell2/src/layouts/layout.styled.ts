@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   height: 100%;
@@ -27,7 +27,7 @@ export const NavItem = styled.li`
 `;
 
 type NavLinkProps = { $isActive: boolean };
-export const NavLink = styled(Link)<NavLinkProps>`
+export const NavLink = styled(RouterNavLink)<NavLinkProps>`
   text-decoration: none;
   color: #f1f1f1;
 

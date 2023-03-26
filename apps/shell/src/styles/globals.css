@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+#__next {
+  background-color: #454d55;
+  color: #f1f1f1;
+  height: 100%;
+  font-family: "Rubik", Arial, sans-serif;
+}
