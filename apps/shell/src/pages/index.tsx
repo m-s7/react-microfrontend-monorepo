@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Icon = styled(Image)`
   width: 14rem;
-  height: 14rem;
+  height: 12.5rem;
   margin-bottom: 2rem;
 `;
 
@@ -53,7 +53,7 @@ export const Home = () => {
     <Container>
       <Icon src={icon} alt="React Icon" />
       <Heading>Shell</Heading>
-      <Text>(Microfrontend Container App)</Text>
+      <Text>(NextJS Microfrontend Container App)</Text>
       <Button
         onClick={() => {
           setIsHello(true);
