@@ -1,8 +1,14 @@
 import { ShellContextProps } from 'shared-context';
-import { Container } from './index.styled';
 import { isEven } from 'is-even';
+import styled from 'styled-components';
 
 const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const Index = (props: ShellContextProps) => {
   return (

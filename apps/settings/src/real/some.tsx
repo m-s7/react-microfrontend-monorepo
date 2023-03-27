@@ -1,4 +1,4 @@
-import { ShellContextProps } from "shared-context";
+import { ShellContextProps } from 'shared-context';
 
 export const Home = (props: ShellContextProps) => {
   return (
