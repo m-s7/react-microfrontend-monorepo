@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   display: inline-block;
@@ -13,4 +13,4 @@ export const StyledButton = styled.button`
   color: #f1f1f1;
   line-height: 26px;
   margin-top: 3rem;
-`
+`;

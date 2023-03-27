@@ -1,14 +1,18 @@
-import dynamic from 'next/dynamic';
-const page = import('../real/some');
+import { ShellContextProps } from 'shared-context';
+import { Container } from './index.styled';
+import { isEven } from 'is-even';
 
-const Page = dynamic(() => import('../real/some'), { suspense: true });
-// @ts-ignore
-Page.getInitialProps = async ctx => {
-  // @ts-ignore
-  const getInitialProps = (await page).default?.getInitialProps;
-  if (getInitialProps) {
-    return getInitialProps(ctx);
-  }
-  return {};
+const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
+
+export const Index = (props: ShellContextProps) => {
+  return (
+    <Container>
+      {props.authToken}
+      <h1>Settings</h1>
+      <div>Is 5 even: {getIsEventText(3)}</div>
+      <div>Is 6 even: {getIsEventText(4)}</div>
+    </Container>
+  );
 };
-export default Page;
+
+export default Index;

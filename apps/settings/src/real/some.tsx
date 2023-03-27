@@ -1,7 +1,12 @@
-export default function Home() {
+import { ShellContextProps } from "shared-context";
+
+export const Home = (props: ShellContextProps) => {
   return (
     <>
-      SETTINGS!!!
+      <p>SETTINGS2!!!</p>
+      <p>{props.authToken}</p>
     </>
-  )
-}
+  );
+};
+
+export default Home;

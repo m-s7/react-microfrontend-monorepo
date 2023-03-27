@@ -1,3 +1,3 @@
-export type ShellProps = {
+export type ShellContextProps = {
   authToken: string;
 };

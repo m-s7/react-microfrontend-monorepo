@@ -1,6 +1,7 @@
-import { MyContext } from './lib';
-import { ShellProps } from './lib';
+import { ShellProvider, ShellContext } from './lib';
+import { ShellContextProps } from './lib';
 
-export default MyContext;
+export default ShellProvider;
 
-export type { ShellProps };
+export { ShellContext };
+export type { ShellContextProps };

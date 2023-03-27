@@ -21,7 +21,7 @@ module.exports = {
       name: 'admin',
       filename: 'remoteEntry.js',
       exposes: {
-        './Admin': './src/app',
+        './Admin': './src/entrypoint',
       },
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },

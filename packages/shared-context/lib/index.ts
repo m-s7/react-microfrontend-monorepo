@@ -1,2 +1,2 @@
-export * from './my-context';
+export * from './shell-provider';
 export * from './types';

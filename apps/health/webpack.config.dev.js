@@ -21,7 +21,7 @@ module.exports = {
       name: 'health',
       filename: 'remoteEntry.js',
       exposes: {
-        './Health': './src/app',
+        './Health': './src/entrypoint',
       },
       shared: {
         react: { singleton: true, strictVersion: true, requiredVersion: '18.2.0' },

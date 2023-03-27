@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import dynamic from 'next/dynamic';
 import { Layout } from '../../layouts';
-import { ShellProps } from 'shared-context';
+import { ShellContextProps } from 'shared-context';
+import { AuthContext } from '../../business';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const HealthRemote = dynamic<ShellProps>(import('health/Health'), { ssr: false });
+const HealthRemote = dynamic<ShellContextProps>(import('health/Health'), { ssr: false });
 
 export const Health = () => {
-  return <HealthRemote authToken="hello!" />;
+  const { authToken } = useContext(AuthContext);
+
+  return <HealthRemote authToken={authToken} />;
 };
 
 Health.getLayout = function getLayout(page: React.ReactElement) {
