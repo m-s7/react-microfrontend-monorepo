@@ -8,6 +8,8 @@ export const Layout = (props: React.PropsWithChildren) => {
   const [authToken, setAuthToken] = useState('initial');
   const router = useRouter();
 
+  console.log(router.pathname)
+
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setAuthToken(`token-${Math.random()}`);
