@@ -8,17 +8,15 @@ export const Layout = (props: React.PropsWithChildren) => {
   const [authToken, setAuthToken] = useState('initial');
   const router = useRouter();
 
-  console.log(router.pathname)
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setAuthToken(`token-${Math.random()}`);
-    }, 2500);
-
-    return () => {
-      window.clearInterval(intervalId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const intervalId = window.setInterval(() => {
+  //     setAuthToken(`token-${Math.random()}`);
+  //   }, 2500);
+  //
+  //   return () => {
+  //     window.clearInterval(intervalId);
+  //   };
+  // }, []);
 
   return (
     <AuthContext.Provider value={{ authToken }}>
@@ -33,27 +31,27 @@ export const Layout = (props: React.PropsWithChildren) => {
           <nav>
             <NavContainer>
               <NavItem>
-                <NavLink href="/" $isActive={router.pathname === '/'}>
+                <NavLink href="/" $isActive={router.asPath === '/'}>
                   Home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/admin" $isActive={router.pathname === '/admin'}>
+                <NavLink href="/admin" $isActive={router.asPath === '/admin'}>
                   Admin
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/health" $isActive={router.pathname === '/health'}>
+                <NavLink href="/health" $isActive={router.asPath === '/health'}>
                   Health
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/settings" $isActive={router.pathname === '/settings'}>
+                <NavLink href="/settings" $isActive={router.asPath === '/settings'}>
                   Settings
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/settings/general" $isActive={router.pathname === '/settings/general'}>
+                <NavLink href="/settings/general" $isActive={router.asPath === '/settings/general'}>
                   General Settings
                 </NavLink>
               </NavItem>

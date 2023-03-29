@@ -13,7 +13,8 @@ const nextConfig = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './Settings': './src/pages/index.tsx',
-          './Settings/General': './src/pages/general/index.tsx',
+          './Settings/[...slug]': './src/pages/[...slug].tsx',
+          // './Settings/General': './src/pages/general/index.tsx',
         },
         shared: {
           'shared-context': {
