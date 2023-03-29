@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

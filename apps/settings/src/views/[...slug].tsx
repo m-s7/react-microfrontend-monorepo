@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import General from './general';
 
 export const Slug = () => {
   const router = useRouter();

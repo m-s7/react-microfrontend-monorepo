@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Content, NavContainer, NavItem, NavLink } from './layout.styled';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { AuthContext } from '../business';
 
 export const Layout = (props: React.PropsWithChildren) => {
-  const [authToken, setAuthToken] = useState('initial');
+  const [authToken] = useState('initial');
   const router = useRouter();
 
   // useEffect(() => {
