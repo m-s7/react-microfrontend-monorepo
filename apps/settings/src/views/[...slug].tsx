@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/router';
 import General from '../pages/general';
 import { getRouteElement, Route } from '../utils';
