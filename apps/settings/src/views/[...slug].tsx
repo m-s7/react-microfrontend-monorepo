@@ -1,21 +1,20 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import General from '../pages/general';
+import { getRouteElement, Route } from '../utils';
+
+const routes: Route[] = [{ path: 'general', element: General }];
 
 export const Slug = () => {
-  const router = useRouter();
-  console.log(router.query);
-  // const basePath = (router.query as { slug: Array<string> }).slug[0];
+  const { asPath, query } = useRouter();
 
-  // console.log(basePath);
+  if ('slug' in query) {
+    console.log(123, asPath);
+    const Element = getRouteElement(routes, asPath);
 
-  // if (basePath === 'general') return <General />;
+    if (Element) return <Element />;
+  }
 
-  return (
-    <div>
-      SZLUG
-      <Link href="general/test">New page</Link>
-    </div>
-  );
+  return <div>404</div>;
 };
 
 export default Slug;
