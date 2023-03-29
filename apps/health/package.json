@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "webpack serve --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
+    "start": "serve -s dist -p 4302",
     "lint": "eslint src --ext ts,tsx",
     "test": "jest"
   },

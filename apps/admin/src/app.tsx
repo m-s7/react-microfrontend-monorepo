@@ -4,7 +4,7 @@ import { Container } from './app.styled';
 
 const getIsEventText = (num: number): string => (isEven(num) ? 'Yes' : 'No');
 
-export const App = () => {
+const App = () => {
   return (
     <Container>
       <h1>Admin</h1>
@@ -13,3 +13,5 @@ export const App = () => {
     </Container>
   );
 };
+
+export default App;
